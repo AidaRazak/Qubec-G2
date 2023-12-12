@@ -1,4 +1,8 @@
-class Time extends Pieces {
+class Time extends Piece {
+    public Time(Box box) {
+        super(box);
+    }
+
     @Override
     public boolean canMove() {
         // Implement Time-specific movement rules

@@ -1,4 +1,8 @@
-class Point extends Pieces {
+class Point extends Piece {
+    public Point(Box box) {
+        super(box);
+    }
+
     private boolean forward = true;
 
     @Override

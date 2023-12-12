@@ -1,4 +1,8 @@
-class Plus extends Pieces {
+class Plus extends Piece {
+    public Plus(Box box) {
+        super(box);
+    }
+
     @Override
     public boolean canMove() {
         // Implement Plus-specific movement rules

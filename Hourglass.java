@@ -1,4 +1,8 @@
-class Hourglass extends Pieces {
+class Hourglass extends Piece {
+    public Hourglass(Box box) {
+        super(box);
+    }
+
     @Override
     public boolean canMove() {
         // Implement Hourglass-specific movement rules
