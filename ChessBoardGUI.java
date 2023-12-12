@@ -4,7 +4,7 @@ import java.awt.*;
 public class ChessBoardGUI extends JFrame {
 
     private JPanel chessBoard;
-    private JButton[][] squares = new JButton[8][8];
+    private JButton[][] squares = new JButton[6][7];
 
     public ChessBoardGUI() {
         initializeGUI();
@@ -15,12 +15,12 @@ public class ChessBoardGUI extends JFrame {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setResizable(false);
 
-        chessBoard = new JPanel(new GridLayout(8, 8));
+        chessBoard = new JPanel(new GridLayout(6, 7));
         chessBoard.setPreferredSize(new Dimension(600, 600));
         add(chessBoard);
 
-        for (int row = 0; row < 8; row++) {
-            for (int col = 0; col < 8; col++) {
+        for (int row = 0; row < 6; row++) {
+            for (int col = 0; col < 7; col++) {
                 squares[row][col] = new JButton();
                 squares[row][col].setOpaque(true);
                 squares[row][col].setBorderPainted(false);
