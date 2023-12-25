@@ -1,6 +1,8 @@
-class Plus extends Piece {
-    public Plus(Box box) {
-        super(box);
+package model;
+
+public class Plus extends Piece{
+    public Plus(boolean white) {
+        super(white);
     }
 
     @Override

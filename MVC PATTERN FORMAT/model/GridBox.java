@@ -1,8 +1,10 @@
-class Box {
+package model;
+
+public class GridBox {
     private int x;
     private int y;
 
-    public Box(int x, int y) {
+    public GridBox(int x, int y) {
         this.x = x;
         this.y = y;
     }
