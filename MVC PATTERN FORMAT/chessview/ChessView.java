@@ -1,8 +1,9 @@
-// ChessView.java
 import javafx.geometry.Insets;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.stage.Screen;
@@ -14,6 +15,7 @@ public class ChessView {
     private double buttonSize;
     private static final int ROWS = 6;
     private static final int COLS = 7;
+    private Button[][] buttons;
 
     public ChessView() {
         this.gridPane = new GridPane();
@@ -21,7 +23,9 @@ public class ChessView {
                 Color.TRANSPARENT, CornerRadii.EMPTY, Insets.EMPTY))); // Transparent background
         this.buttonSize = 50;
 
+        this.buttons = new Button[ROWS][COLS];
         initializeBoard();
+        initializePieces(); // Add images to specific grid positions
     }
 
     public GridPane getGridPane() {
@@ -59,15 +63,18 @@ public class ChessView {
 
                 // Increase the border width for a thicker border
                 BorderStroke borderStroke = new BorderStroke(
-                        Color.BLUE, BorderStrokeStyle.SOLID, CornerRadii.EMPTY, new BorderWidths(2)); // Change 2 to your desired thickness
+                        Color.BLUE, BorderStrokeStyle.SOLID, CornerRadii.EMPTY, new BorderWidths(2)); // Change 2 to
                 Border border = new Border(borderStroke);
 
+                buttons[row][col] = button;
+
+                button.setOnAction(e -> {
+                    int clickedRow = GridPane.getRowIndex(button);
+                    int clickedCol = GridPane.getColumnIndex(button);
+                    handleButtonClick(clickedRow, clickedCol);
+                });
+
                 button.setBorder(border); // Blue gridline border
-
-                final int finalRow = row;
-                final int finalCol = col;
-
-                button.setOnAction(e -> handleButtonClick(finalRow, finalCol));
                 gridPane.add(button, col, row);
             }
         }
@@ -94,17 +101,69 @@ public class ChessView {
         gridPane.setLayoutY(startY);
     }
 
+    private void initializePieces() {
+        // Set images at specific positions during initialization
+        setPieceAt(1, 0, "images\\BArrow.PNG");
+        setPieceAt(1, 1, "images\\BArrow.PNG");
+        setPieceAt(1, 2, "images\\BArrow.PNG");
+        setPieceAt(1, 3, "images\\BArrow.PNG");
+        setPieceAt(1, 4, "images\\BArrow.PNG");
+        setPieceAt(1, 5, "images\\BArrow.PNG");
+        setPieceAt(1, 6, "images\\BArrow.PNG");
+        setPieceAt(0, 0, "images\\BPlus.PNG");
+        setPieceAt(0, 1, "images\\BHourglass.PNG");
+        setPieceAt(0, 2, "images\\BCross.PNG");
+        setPieceAt(0, 3, "images\\BSun.PNG");
+        setPieceAt(0, 4, "images\\BPlus.PNG");
+        setPieceAt(0, 5, "images\\BHourglass.PNG");
+        setPieceAt(0, 6, "images\\BPlus.PNG");
+        setPieceAt(4, 0, "images\\WArrow.PNG");
+        setPieceAt(4, 1, "images\\WArrow.PNG");
+        setPieceAt(4, 2, "images\\WArrow.PNG");
+        setPieceAt(4, 3, "images\\WArrow.PNG");
+        setPieceAt(4, 4, "images\\WArrow.PNG");
+        setPieceAt(4, 5, "images\\WArrow.PNG");
+        setPieceAt(4, 6, "images\\WArrow.PNG");
+        setPieceAt(5, 0, "images\\WPlus.PNG");
+        setPieceAt(5, 1, "images\\WHourglass.PNG");
+        setPieceAt(5, 2, "images\\WCross.PNG");
+        setPieceAt(5, 3, "images\\WSun.PNG");
+        setPieceAt(5, 4, "images\\WCross.PNG");
+        setPieceAt(5, 5, "images\\WHourglass.PNG");
+        setPieceAt(5, 6, "images\\WPlus.PNG");
+
+
+
+
+        // Set more images at other positions as needed
+    }
+
     private void handleButtonClick(int row, int col) {
-        // Handle button click event
-        System.out.println("Button clicked: Row " + row + ", Col " + col);
-        // You can notify the controller or update the model here
+        // Handle button click if needed
+    }
+
+    private void setPieceAt(int row, int col, String imagePath) {
+        Image pieceImage = new Image(imagePath);
+        ImageView imageView = new ImageView(pieceImage);
+        imageView.setFitWidth(buttonSize);
+        imageView.setFitHeight(buttonSize);
+
+        Button targetButton = getButtonAt(row, col);
+        if (targetButton != null) {
+            targetButton.setGraphic(imageView);
+        }
+    }
+
+    private Button getButtonAt(int row, int col) {
+        if (row >= 0 && row < ROWS && col >= 0 && col < COLS) {
+            return buttons[row][col];
+        }
+        return null;
     }
 
     public Scene createScene() {
-        // Create a new scene using the GridPane
         Scene scene = new Scene(gridPane);
 
-        // Listen for changes in the scene's width and height
         scene.widthProperty().addListener((observable, oldValue, newValue) -> updateBoardSize(scene));
         scene.heightProperty().addListener((observable, oldValue, newValue) -> updateBoardSize(scene));
 
