@@ -1,5 +1,4 @@
-package chessview;
-
+// ChessView.java
 import javafx.geometry.Insets;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.Scene;
