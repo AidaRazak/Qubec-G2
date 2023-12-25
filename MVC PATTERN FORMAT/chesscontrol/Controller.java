@@ -1,9 +1,5 @@
-package chesscontrol;
-
-import chessmodel.ChessModel;
-import chessview.ChessView;
-
-public class Controller {
+// ChessController.java
+public class ChessController {
     private ChessModel model;
     private ChessView view;
 
@@ -13,5 +9,5 @@ public class Controller {
         // Set up event handlers or other controller-specific logic
     }
 
-    // Implement methods to handle user input and update the model/view    
+    // Implement methods to handle user input and update the model/view
 }
