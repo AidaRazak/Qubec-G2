@@ -1,8 +1,8 @@
-package model;
+package chessmodel;
 
-public class Point extends Piece {
+public class Time extends Piece{
 
-    public Point(boolean white) {
+    public Time(boolean white) {
         super(white);
     }
 

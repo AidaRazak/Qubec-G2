@@ -1,4 +1,4 @@
-package model;
+package chessmodel;
 
 public class Plus extends Piece{
     public Plus(boolean white) {

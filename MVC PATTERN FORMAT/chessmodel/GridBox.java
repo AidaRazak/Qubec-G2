@@ -1,4 +1,4 @@
-package model;
+package chessmodel;
 
 public class GridBox {
     private int x;
