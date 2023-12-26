@@ -1,5 +1,11 @@
 package chessmodel;
 
+import chesspieces.Cross;
+import chesspieces.Hourglass;
+import chesspieces.Plus;
+import chesspieces.Point;
+import chesspieces.Sun;
+
 public class Player {
     
     public Point point [] = new Point[7];

@@ -1,4 +1,4 @@
-package chessmodel;
+package chesspieces;
 
 public class Hourglass extends Piece {
 

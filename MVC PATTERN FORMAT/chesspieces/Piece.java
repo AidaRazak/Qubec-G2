@@ -1,4 +1,4 @@
-package chessmodel;
+package chesspieces;
 
 public abstract class Piece {
     private boolean killed;
