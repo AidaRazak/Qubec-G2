@@ -1,4 +1,6 @@
 // ChessController.java
+import chessmodel.ChessModel;
+
 public class ChessController {
     private ChessModel model;
     private ChessView view;
