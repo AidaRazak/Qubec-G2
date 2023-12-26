@@ -1,11 +1,31 @@
 package chesspieces;
 
 public abstract class Piece {
+    private int xPos;
+    private int yPos;
     private boolean killed;
-    private boolean white;
+    public boolean white;
 
-    public Piece(boolean white) {
+    public Piece(int xPos, int yPos, boolean white) {
+        this.xPos = xPos;
+        this.yPos = yPos;
         this.setWhite(white);
+    }
+
+    public int getXPos() {
+        return xPos;
+    }
+
+    public void setXPos(int newXPos) {
+        this.xPos = newXPos;
+    }
+
+    public int getYPos() {
+        return yPos;
+    }
+
+    public void setYPos(int newYPos) {
+        this.xPos = newYPos;
     }
 
     public boolean isWhite() 
@@ -28,5 +48,7 @@ public abstract class Piece {
         this.killed = killed; 
     }
 
-    public abstract boolean canMove();    
+    public abstract boolean canMove();
+    
+    public abstract void move (int xPos, int yPos);
 }
